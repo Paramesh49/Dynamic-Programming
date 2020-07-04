@@ -1,0 +1,102 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+int merge(int A[],int lb,int mid,int ub)
+{
+    int i,j,k,b[10];
+    i=lb;
+    j=mid+1;
+    k=lb;
+    while(i<=mid && j<=ub)
+    {
+        if(A[i]<=A[j])
+        {
+            b[k]=A[i];
+            i++;
+            k++;
+        }
+        else 
+        {
+            b[k]=A[j];
+            j++;
+            k++;
+        }
+    }
+    if(i>mid)
+    {
+    while(j<=ub)
+    {
+        b[k]=A[j];
+        j++;
+        k++;
+    }
+    }
+    else
+    {
+        while(i<=mid)
+        {
+            b[k]=A[i];
+            i++;
+            k++;
+        }
+    }
+   for(k=lb;k<=ub;k++)
+   A[k]=b[k];
+}
+
+int mergesort(int A[],int lb,int ub)
+{
+    int mid;
+    if(lb<ub)
+    {
+    mid=lb+(ub-lb)/2;
+    mergesort(A,lb,mid);
+    mergesort(A,mid+1,ub);
+    merge(A,lb,mid,ub);
+    }
+}
+void printArray(int A[], int size) 
+{ 
+    int i; 
+    for (i=0; i < size; i++) 
+        printf("%d ", A[i]); 
+    printf("\n"); 
+} 
+
+int main()
+{
+    int A[10]={10,20,1,25,3,5,20,8,15,13},lb,ub,a,size;
+    lb=0;
+    ub=9;
+    size=sizeof (A)/sizeof (A[0]);
+    printf("Given array is \n");
+    printArray(A,size);
+    
+    mergesort(A,lb,ub);
+    printf("\nSorted array is \n"); 
+    printArray(A,size); 
+    return 0; 
+}
+
